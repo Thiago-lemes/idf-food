@@ -1,7 +1,7 @@
-package DTO
+package org.foods.idf.DTO
 
-import entity.Produto
-import entity.StatusProduto
+import org.foods.idf.entity.Produto
+import org.foods.idf.entity.StatusProduto
 import java.time.LocalDateTime
 
 data class ProdutoDTO(

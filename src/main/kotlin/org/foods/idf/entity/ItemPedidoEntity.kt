@@ -1,4 +1,4 @@
-package entity
+package org.foods.idf.entity
 
 import jakarta.persistence.*
 

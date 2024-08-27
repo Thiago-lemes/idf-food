@@ -1,9 +1,9 @@
-package service
+package org.foods.idf.service
 
-import DTO.ProdutoDTO
-import entity.Produto
+import org.foods.idf.DTO.ProdutoDTO
+import org.foods.idf.entity.Produto
 import org.springframework.stereotype.Service
-import repository.ProdutoRepository
+import org.foods.idf.repository.ProdutoRepository
 
 @Service
 class ProdutoService(
