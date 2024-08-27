@@ -14,7 +14,7 @@ data class ProdutoDTO(
     val dataCriacao: LocalDateTime? = null,
     val status: StatusProduto? = null
 ) {
-    fun toEntity(): Produto {
+    fun toProdutoEntity(): Produto {
         return Produto(
             nome = nome,
             descricao = descricao,

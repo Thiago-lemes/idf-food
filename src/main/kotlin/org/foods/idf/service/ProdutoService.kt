@@ -10,9 +10,7 @@ class ProdutoService(
     private val repository: ProdutoRepository,
 ) {
     fun cadastro(dto: ProdutoDTO): Produto {
-            val produto = dto.toEntity()
-            repository.save(produto)
+            val produto = repository.save(dto.toProdutoEntity())
             return produto
     }
-
 }
