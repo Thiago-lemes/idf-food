@@ -5,17 +5,32 @@ import org.foods.idf.entity.CategoriaEntity
 import org.foods.idf.service.Categoria
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("categoria")
-class CategoriaController (private val service: Categoria){
+class CategoriaController(private val service: Categoria) {
     @PostMapping("/nova-categoria")
     fun novaCategoria(@RequestBody dto: CategoriaDTO): ResponseEntity<CategoriaEntity> {
         val novaCategoria = service.novaCategoria(dto)
         return ResponseEntity.status(HttpStatus.CREATED).body(novaCategoria)
+    }
+
+    @GetMapping(value = ["/{id}"])
+    fun findById(@PathVariable(value = "id") id: Long): ResponseEntity<CategoriaEntity> {
+        val dto = service.buscaCategoriaId(id)
+        return ResponseEntity.ok(dto)
+    }
+
+    @GetMapping("/find-all")
+    fun buscarTodos(): ResponseEntity<List<CategoriaEntity>> {
+        val categorias = service.buscaTodasCategorias()
+        return ResponseEntity.ok(categorias)
+    }
+
+    @DeleteMapping(value = ["/{id}"])
+    fun delete(@PathVariable(value = "id") id: Long): ResponseEntity<*> {
+        service.delete(id)
+        return ResponseEntity.noContent().build<Any>()
     }
 }
