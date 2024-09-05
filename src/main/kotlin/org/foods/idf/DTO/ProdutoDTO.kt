@@ -1,5 +1,6 @@
 package org.foods.idf.DTO
 
+import org.foods.idf.entity.CategoriaEntity
 import org.foods.idf.entity.Produto
 import org.foods.idf.entity.StatusProduto
 import java.time.LocalDateTime
@@ -9,7 +10,7 @@ data class ProdutoDTO(
     val descricao: String? = null,
     val preco: Double,
     val quantidade: Int,
-//    val categoriaId: Long,
+    val categoriaId: Long,
     val imagemUrl: String? = null,
     val dataCriacao: LocalDateTime? = null,
     val status: StatusProduto? = null
@@ -23,7 +24,7 @@ data class ProdutoDTO(
             dataCriacao = dataCriacao ?: LocalDateTime.now(),
             status = status ?: StatusProduto.DISPONIVEL,
             imagem = imagemUrl,
-//            categoria = CategoriaEntity(id = categoriaId)
+            categoria = CategoriaEntity(id = categoriaId)
         )
     }
 }
