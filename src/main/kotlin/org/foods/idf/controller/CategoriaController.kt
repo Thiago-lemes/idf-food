@@ -3,6 +3,7 @@ package org.foods.idf.controller
 import org.foods.idf.DTO.CategoriaDTO
 import org.foods.idf.entity.CategoriaEntity
 import org.foods.idf.service.Categoria
+import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -23,8 +24,8 @@ class CategoriaController(private val service: Categoria) {
     }
 
     @GetMapping("/find-all")
-    fun buscarTodos(): ResponseEntity<List<CategoriaEntity>> {
-        val categorias = service.buscaTodasCategorias()
+    fun buscarTodos(): ResponseEntity<Page<CategoriaEntity>> {
+        val categorias = service.buscaTodasCategorias(0, 5) // Pagina 0, com 5 itens
         return ResponseEntity.ok(categorias)
     }
 

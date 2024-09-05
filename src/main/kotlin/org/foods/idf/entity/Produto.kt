@@ -25,9 +25,9 @@ data class Produto(
     @Column(name = "imagem")
     val imagem: String? = null,
 
-//    @ManyToOne
-//    @JoinColumn(name = "categoria_id")
-//    val categoria: CategoriaEntity,
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    val categoria: CategoriaEntity,
 
     @Column(nullable = false)
     val dataCriacao: LocalDateTime = LocalDateTime.now(),
