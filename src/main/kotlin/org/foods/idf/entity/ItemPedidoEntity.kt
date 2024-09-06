@@ -14,7 +14,7 @@ data class ItemPedidoEntity(
 
     @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false)
-    val produto: Produto,
+    val produtoEntity: ProdutoEntity,
 
     @Column(nullable = false)
     val quantidade: Int,

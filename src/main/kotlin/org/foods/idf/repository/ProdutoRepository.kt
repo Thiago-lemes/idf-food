@@ -1,9 +1,8 @@
 package org.foods.idf.repository
 
-import org.foods.idf.entity.Produto
+import org.foods.idf.entity.ProdutoEntity
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface ProdutoRepository: JpaRepository<Produto, Long> {
-    fun findByNome(nome: String): Produto?
-
+interface ProdutoRepository: JpaRepository<ProdutoEntity, Long> {
+    fun findByNome(nome: String): ProdutoEntity?
 }

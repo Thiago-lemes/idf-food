@@ -1,7 +1,7 @@
 package org.foods.idf.DTO
 
 import org.foods.idf.entity.CategoriaEntity
-import org.foods.idf.entity.Produto
+import org.foods.idf.entity.ProdutoEntity
 import org.foods.idf.entity.StatusProduto
 import java.time.LocalDateTime
 
@@ -15,8 +15,8 @@ data class ProdutoDTO(
     val dataCriacao: LocalDateTime? = null,
     val status: StatusProduto? = null
 ) {
-    fun toProdutoEntity(): Produto {
-        return Produto(
+    fun toProdutoEntity(): ProdutoEntity {
+        return ProdutoEntity(
             nome = nome,
             descricao = descricao,
             preco = preco,

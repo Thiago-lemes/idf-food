@@ -2,7 +2,8 @@ package org.foods.idf.controller
 
 import org.foods.idf.DTO.CategoriaDTO
 import org.foods.idf.entity.CategoriaEntity
-import org.foods.idf.service.Categoria
+import org.foods.idf.service.CategoriaService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("categoria")
-class CategoriaController(private val service: Categoria) {
+class CategoriaController(
+    @Autowired
+    private val service: CategoriaService
+) {
     @PostMapping("/nova-categoria")
     fun novaCategoria(@RequestBody dto: CategoriaDTO): ResponseEntity<CategoriaEntity> {
         val novaCategoria = service.novaCategoria(dto)
@@ -24,8 +28,8 @@ class CategoriaController(private val service: Categoria) {
     }
 
     @GetMapping("/find-all")
-    fun buscarTodos(): ResponseEntity<Page<CategoriaEntity>> {
-        val categorias = service.buscaTodasCategorias(0, 5) // Pagina 0, com 5 itens
+    fun findAll(@RequestParam page: Int, @RequestParam size: Int): ResponseEntity<Page<CategoriaEntity>> {
+        val categorias = service.buscaCategorias(page, size )
         return ResponseEntity.ok(categorias)
     }
 

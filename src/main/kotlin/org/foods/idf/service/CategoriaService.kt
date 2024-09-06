@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class Categoria(private val repository: CategoriaRepository) {
+class CategoriaService(private val repository: CategoriaRepository) {
     fun novaCategoria(dto: CategoriaDTO): CategoriaEntity {
         val categoria = dto.nome.trim().uppercase()
         val nome = buscaNome(categoria)
@@ -27,7 +27,7 @@ class Categoria(private val repository: CategoriaRepository) {
         return entity
     }
 
-    fun buscaTodasCategorias(page: Int, size: Int): Page<CategoriaEntity> {
+    fun buscaCategorias(page: Int, size: Int): Page<CategoriaEntity> {
         val pageable: Pageable = PageRequest.of(page, size)
         return repository.findAll(pageable)
     }
