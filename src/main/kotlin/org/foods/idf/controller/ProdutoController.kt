@@ -16,7 +16,7 @@ class ProdutoController(
     private val service: ProdutoService
 ) {
     @PostMapping("/cadastro-novo-produto")
-    fun create(@RequestBody dto: ProdutoDTO): ResponseEntity<ProdutoEntity>{
+    fun create(@RequestBody dto: ProdutoDTO): ResponseEntity<ProdutoEntity> {
         val produtoCriado = service.cadastro(dto)
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoCriado)
     }
@@ -25,5 +25,11 @@ class ProdutoController(
     fun findAll(@RequestParam page: Int, @RequestParam size: Int): ResponseEntity<Page<ProdutoEntity>> {
         val produtos = service.buscaProdutos(page, size)
         return ResponseEntity.ok(produtos)
+    }
+
+    @PutMapping("/{id}")
+    fun atualizarProduto(@PathVariable id: Long, @RequestBody dto: ProdutoDTO): ResponseEntity<ProdutoEntity> {
+        val produtoAtualizado = service.update(id, dto)
+        return ResponseEntity.ok(produtoAtualizado)
     }
 }
