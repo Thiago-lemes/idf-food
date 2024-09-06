@@ -28,8 +28,14 @@ class ProdutoController(
     }
 
     @PutMapping("/{id}")
-    fun atualizarProduto(@PathVariable id: Long, @RequestBody dto: ProdutoDTO): ResponseEntity<ProdutoEntity> {
+    fun update(@PathVariable id: Long, @RequestBody dto: ProdutoDTO): ResponseEntity<ProdutoEntity> {
         val produtoAtualizado = service.update(id, dto)
         return ResponseEntity.ok(produtoAtualizado)
+    }
+
+    @DeleteMapping(value = ["/{id}"])
+    fun delete(@PathVariable(value = "id") id: Long): ResponseEntity<*> {
+        service.delete(id)
+        return ResponseEntity.noContent().build<Any>()
     }
 }
